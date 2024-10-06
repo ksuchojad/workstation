@@ -5,8 +5,15 @@ resource "aws_instance" "wrk01" {
   subnet_id                   = aws_subnet.wrk_subnet.id
   key_name                    = "workstation"
   associate_public_ip_address = true
+  user_data_replace_on_change = true
+
+  user_data = file("userdata.sh")
 
   tags = {
     Name = "Workstation 01"
   }
+}
+
+output "aws_instance_wrk_ip_address" {
+  value = ""
 }
