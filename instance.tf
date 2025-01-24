@@ -39,10 +39,6 @@ resource "aws_instance" "wrk02" {
     $password = "Administrator1!"
     $user = [ADSI]"WinNT://./Administrator,User"
     $user.SetPassword($password)
-
-    # Wymuszenie zmiany hasła przy pierwszym logowaniu (opcjonalnie)
-    $user.Put("PasswordExpired", 0)
-    $user.SetInfo()
     </powershell>
   EOF
 
